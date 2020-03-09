@@ -15,19 +15,20 @@ ADD https://bootstrap.pypa.io/get-pip.py /tmp/get-pip.py
 
 # Package Installation
 # Packages - https://pkgs.alpinelinux.org/packages
-#
-# Python PIP Install
+RUN apk update && \
+apk add --no-cache bash && \
+apk add shadow && \
+apk add dos2unix && \
+apk add gcc && \
+apk add musl-dev
+
+
 RUN python3 /tmp/get-pip.py && \
 pip3 install --upgrade pip && \
-#
-# SB_Utils install
 cd /tmp/modules/utils && \
 python3 setup.py install && \
 cd && \
-#
-# Cleanup
+apk del tar && \
 rm -rf /var/cache/apk/* *.tar.gz* /usr/src /root/.gnupg /tmp/* && \
-#
-# Check versions
 python3 --version && \
 pip3 --version

@@ -81,7 +81,7 @@ services:
     hostname: actuator-isr
     image:  g2inc/oif-device-actutator-isr
     build:
-      context: ./device/actuator/isr
+      context: ./device/actuator/ISR
     env_file:
     - ./environment/queue.connect.env
     environment:
