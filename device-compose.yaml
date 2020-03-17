@@ -94,3 +94,21 @@ services:
       - sh
       - start.sh
     restart: on-failure:5
+
+  actuator-isr:                                   # container name
+    hostname: actuator-isr                      # hostname of container
+    image: O.I.F./actuator:isr                     # image name
+    build:
+      context: ./device/isr                     # location of Dockerfile
+    env_file:
+    - ./environment/queue.connect.env           # path to shared environment variables
+    environment:
+      QUEUE_EXCHANGE: 'actuator'                # actuator specific environment variable (this can stay the same for your container)
+    external_links:
+      - queue                                   # link to internal buffer (more on this below)
+    depends_on:
+      - queue                                   # indicates that this container should wait for queue to exist before running
+    entrypoint:                                 # indicates script to run upon container startup
+      - sh
+      - start.sh
+    restart: on-failure:5 
