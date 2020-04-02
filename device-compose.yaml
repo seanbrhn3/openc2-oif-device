@@ -96,10 +96,10 @@ services:
     restart: on-failure:5
 
   actuator-isr:                                   # container name
-    hostname: actuator-isr                      # hostname of container
-    image: O.I.F./actuator:isr                     # image name
+    hostname: universal-actuator                      # hostname of container
+    image: gcr.io/openc2home/universal-actuator                   # image name
     build:
-      context: ./device/isr                     # location of Dockerfile
+      context: ./device/actuator/universal-actuator                    # location of Dockerfile
     env_file:
     - ./environment/queue.connect.env           # path to shared environment variables
     environment:
