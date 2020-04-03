@@ -28,7 +28,8 @@
       [28, "copy", "Duplicate an object,  file, data flow or artifact."]
     ]],
     ["Target", "Choice", [], "OpenC2 Target datatypes", [
-      [1, "artifact", "Artifact", [], "An array of bytes representing a file-like object or a link to that object."],
+      [1,"message","Command",[],"A set  of commands you wish to send to a device"],
+      [2, "artifact", "Artifact", [], "An array of bytes representing a file-like object or a link to that object."],
       [10, "file", "File", [], "Properties of a file."],
       [3, "device", "Device", [], "The properties of a hardware device."],
       [16, "openc2", "OpenC2", [], "A set of items used with the query action to determine an actuator's capabilities"],
