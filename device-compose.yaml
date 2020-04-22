@@ -95,7 +95,7 @@ services:
       - start.sh
     restart: on-failure:5
 
-  actuator-isr:                                   # container name
+  univeral-actuator:                                   # container name
     hostname: universal-actuator                      # hostname of container
     image: gcr.io/openc2home/universal-actuator                   # image name
     build:
@@ -103,7 +103,7 @@ services:
     env_file:
     - ./environment/queue.connect.env           # path to shared environment variables
     environment:
-      QUEUE_EXCHANGE: 'actuator'                # actuator specific environment variable (this can stay the same for your container)
+      QUEUE_EXCHANGE: 'universal-actuator'                # actuator specific environment variable (this can stay the same for your container)
     external_links:
       - queue                                   # link to internal buffer (more on this below)
     depends_on:

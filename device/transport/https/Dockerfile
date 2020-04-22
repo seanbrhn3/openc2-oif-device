@@ -13,6 +13,14 @@ description="This is the HTTPS Transport Module container"
 ADD requirements.txt /tmp/requirements.txt
 ADD docker_dev_start.sh /opt/transport/dev_start.sh
 
+RUN apk add --no-cache openssl
+
+ENV DOCKERIZE_VERSION v0.6.1
+RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+
+
 # Copy directories
 ADD HTTPS/ /opt/transport/HTTPS
 
@@ -24,6 +32,7 @@ RUN apk update && \
   apk add --no-cache \
   bash \
   openssl && \
+  apk add docker && \
   pip3 install -r /tmp/requirements.txt && \
   rm -r /root/.cache && \
   chmod +x /opt/transport/dev_start.sh && \

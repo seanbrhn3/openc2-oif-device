@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 echo "Running COAP Transport Module."
-dockerize -wait tcp://$QUEUE_HOST:$QUEUE_PORT -timeout 30s
-
+#dockerize -wait tcp://$QUEUE_HOST:$QUEUE_PORT -timeout 30s
+dockerize -wait  tcp://$QUEUE_HOST:$QUEUE_PORT 
 echo "Starting CoAP Server"
 python3 -u coap_server.py &
 status=$?

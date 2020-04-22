@@ -1,7 +1,7 @@
 """
 Query Target functions
 """
-from .utils import Dispatch, exceptions, FrozenDict
+from ..utils import Dispatch, exceptions, FrozenDict
 
 Query = Dispatch("query")
 

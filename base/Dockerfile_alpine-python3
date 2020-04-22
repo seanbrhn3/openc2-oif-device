@@ -10,6 +10,14 @@ description="This is the Base Alpine Python3 container for Screaming Bunny."
 
 ENV PYTHONUNBUFFERED=0
 
+
+RUN apk add --no-cache openssl
+
+ENV DOCKERIZE_VERSION v0.6.1
+RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+
 ADD modules/ /tmp/modules
 ADD https://bootstrap.pypa.io/get-pip.py /tmp/get-pip.py
 

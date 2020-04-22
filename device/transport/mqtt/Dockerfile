@@ -9,6 +9,11 @@ license="BSD" \
 version="2.0" \
 description="This is the Transport Module container"
 
+ENV DOCKERIZE_VERSION v0.6.1
+RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+
 ADD requirements.txt /tmp/requirements.txt
 ADD MQTT/ /opt/transport/MQTT
 #ADD certs /opt/transport/MQTT/certs
